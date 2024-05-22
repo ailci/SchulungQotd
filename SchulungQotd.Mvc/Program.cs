@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SchulungQotd.Data.Context;
 using SchulungQotd.Mvc.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 //MVC
 builder.Services.AddControllersWithViews();
+
+//QotdContext
+builder.Services.AddDbContext<QotdContext>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
