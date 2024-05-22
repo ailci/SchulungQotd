@@ -15,6 +15,7 @@ namespace SchulungQotd.Mvc.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Greeting = DateTime.Now.Hour < 12 ? "Guten Morgen" : "Guten Tag";
             return View();
         }
 
