@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchulungQotd.Mvc.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 using SchulungMvc.Common.ViewModels;
 using SchulungQotd.Data.Context;
 using SchulungQotd.Domain;
@@ -20,18 +21,17 @@ namespace SchulungQotd.Mvc.Controllers
 
         public IActionResult Index()
         {
-            var quotes = _context.Quotes.ToList();
-
-
+            //TODO: Spruch des Tages erstellen
+            var qotd = _context.Quotes.Include(c => c.Author).FirstOrDefault();
 
             var qotdVm = new QuoteOfTheDayViewModel
             {
-                AuthorName = "Ali Ilci",
-                QuoteText = "Larum lierum Löffelstiel, wer nicht fragt, der weiß nicht viel.",
-                AuthorDescription = "Dozent",
-                AuthorBirthdate = DateOnly.FromDateTime(new DateTime(1978, 07, 13)),
-                AuthorImage = null,
-                AuthorImageMimeType = null
+                AuthorName = qotd.Author.Name,
+                AuthorDescription = qotd.Author.Description,
+                AuthorBirthdate = qotd.Author.BirthDate,
+                AuthorImage = qotd.Author.Photo,
+                AuthorImageMimeType = qotd.Author.PhotoMimeType,
+                QuoteText = qotd.QuoteText
             };
 
             return View(qotdVm);

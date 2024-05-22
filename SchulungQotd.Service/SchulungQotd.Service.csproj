@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SchulungMvc.Common\SchulungMvc.Common.csproj" />
+    <ProjectReference Include="..\SchulungQotd.Data\SchulungQotd.Data.csproj" />
+  </ItemGroup>
+
+</Project>
