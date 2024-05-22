@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using SchulungQotd.Mvc.Models;
 using System.Diagnostics;
+using SchulungMvc.Common.ViewModels;
+using SchulungQotd.Domain;
 
 namespace SchulungQotd.Mvc.Controllers
 {
@@ -15,8 +17,17 @@ namespace SchulungQotd.Mvc.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Greeting = DateTime.Now.Hour < 12 ? "Guten Morgen" : "Guten Tag";
-            return View();
+            var qotdVm = new QuoteOfTheDayViewModel
+            {
+                AuthorName = "Ali Ilci",
+                QuoteText = "Larum lierum Löffelstiel, wer nicht fragt, der weiß nicht viel.",
+                AuthorDescription = "Dozent",
+                AuthorBirthdate = DateOnly.FromDateTime(new DateTime(1978, 07, 13)),
+                AuthorImage = null,
+                AuthorImageMimeType = null
+            };
+
+            return View(qotdVm);
         }
 
         public IActionResult Privacy()

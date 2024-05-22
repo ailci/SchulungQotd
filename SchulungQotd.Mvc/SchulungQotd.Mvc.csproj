@@ -15,4 +15,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SchulungMvc.Common\SchulungMvc.Common.csproj" />
+    <ProjectReference Include="..\SchulungQotd.Domain\SchulungQotd.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
