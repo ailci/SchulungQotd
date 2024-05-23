@@ -21,6 +21,13 @@ namespace SchulungQotd.Mvc.Controllers
             return View(authorsVm);
         }
 
+        public async Task<IActionResult> GetImage(Guid authorId)
+        {
+            var author = await qotdService.GetAuthorByIdAsync(authorId);
+
+
+        }
+
         #endregion
     }
 }

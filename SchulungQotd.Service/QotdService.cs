@@ -48,5 +48,14 @@ namespace SchulungQotd.Service
 
             return mapper.Map<IEnumerable<AuthorViewModel>>(authors);
         }
+
+        public async Task<AuthorViewModel?> GetAuthorByIdAsync(Guid id, bool includeQuotes = false)
+        {
+            var author = !includeQuotes
+                ? await context.Authors.FindAsync(id)
+                : await context.Authors.Include(c => c.Quotes).SingleOrDefaultAsync(c => c.Id.Equals(id));
+
+            return mapper.Map<AuthorViewModel?>(author);
+        }
     }
 }
