@@ -34,7 +34,7 @@ namespace SchulungQotd.Mvc.Controllers
         public async Task<IActionResult> Details(Guid id)
         {
             logger.LogInformation($"Details mit Author-Id: {id} aufgerufen...");
-            var author = await qotdService.GetAuthorByIdAsync(id);
+            var author = await qotdService.GetAuthorByIdAsync(id, true);
             return View(author);
         }
 

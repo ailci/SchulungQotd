@@ -1,0 +1,44 @@
+﻿@using Microsoft.EntityFrameworkCore.Update.Internal
+@model SchulungMvc.Common.ViewModels.AuthorViewModel
+
+<dl>
+    <dt></dt>
+    <dd><img width="120" src="@Url.Action("GetImage","Authors", new { authorId = Model.Id })" /></dd>
+
+    <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+    <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.Description)</dt>
+    <dd>@Html.DisplayFor(model => Model.Description)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.BirthDate)</dt>
+    <dd>@Html.DisplayFor(model => model.BirthDate)</dd>
+</dl>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Quotes.FirstOrDefault().QuoteText)</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var quote in Model.Quotes)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => quote.QuoteText)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@* @if (Model.Quotes is not null && Model.Quotes.Count > 0)
+{
+    <div class="row">
+        <ul class="list-group list-group-numbered">
+            @foreach (var quote in Model.Quotes)
+            {
+                <li class="list-group-item">@quote.QuoteText</li>
+            }
+        </ul>
+    </div>
+} *@
