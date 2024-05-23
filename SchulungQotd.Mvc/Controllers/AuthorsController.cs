@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using SchulungQotd.Domain;
 using SchulungQotd.Service;
 
 namespace SchulungQotd.Mvc.Controllers
@@ -28,6 +29,13 @@ namespace SchulungQotd.Mvc.Controllers
             return author?.PhotoMimeType is not null
                 ? new FileContentResult(author.Photo!, author.PhotoMimeType)
                 : new VirtualFileResult("~/images/noimg.jpg", System.Net.Mime.MediaTypeNames.Image.Jpeg);
+        }
+
+        public async Task<IActionResult> Details(Guid id)
+        {
+            logger.LogInformation($"Details mit Author-Id: {id} aufgerufen...");
+            var author = await qotdService.GetAuthorByIdAsync(id);
+            return View(author);
         }
 
         #endregion
