@@ -28,5 +28,10 @@ namespace SchulungQotd.Service
         {
             throw new NotImplementedException();
         }
+
+        public async Task<AuthorViewModel?> GetAuthorByIdAsync(Guid id, bool includeQuotes = false)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

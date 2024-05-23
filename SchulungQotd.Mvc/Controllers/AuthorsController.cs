@@ -25,7 +25,9 @@ namespace SchulungQotd.Mvc.Controllers
         {
             var author = await qotdService.GetAuthorByIdAsync(authorId);
 
-
+            return author?.PhotoMimeType is not null
+                ? new FileContentResult(author.Photo!, author.PhotoMimeType)
+                : new VirtualFileResult("~/images/noimg.jpg", System.Net.Mime.MediaTypeNames.Image.Jpeg);
         }
 
         #endregion
