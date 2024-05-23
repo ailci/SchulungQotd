@@ -39,5 +39,29 @@ namespace SchulungQotd.Mvc.Controllers
         }
 
         #endregion
+
+        #region DELETE
+
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            logger.LogInformation($"Delete mit Author-Id: {id} aufgerufen...");
+            return View(await qotdService.GetAuthorByIdAsync(id));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            var deletedAuthorVm = await qotdService.DeleteAuthorAsync(id);
+
+            if (deletedAuthorVm is not null)
+            {
+                //Weiterleiten
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(deletedAuthorVm);
+        }
+
+        #endregion
     }
 }

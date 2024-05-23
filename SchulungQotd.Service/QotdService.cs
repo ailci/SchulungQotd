@@ -57,5 +57,20 @@ namespace SchulungQotd.Service
 
             return mapper.Map<AuthorViewModel?>(author);
         }
+
+        public async Task<AuthorViewModel?> DeleteAuthorAsync(Guid id)
+        {
+            var author = await context.Authors.FindAsync(id);
+
+            if (author is null)
+            {
+                return null;
+            }
+
+            context.Authors.Remove(author);
+            await context.SaveChangesAsync();
+
+            return mapper.Map<AuthorViewModel>(author);
+        }
     }
 }

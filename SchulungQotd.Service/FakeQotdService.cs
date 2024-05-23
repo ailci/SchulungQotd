@@ -33,5 +33,10 @@ namespace SchulungQotd.Service
         {
             throw new NotImplementedException();
         }
+
+        public async Task<AuthorViewModel?> DeleteAuthorAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
