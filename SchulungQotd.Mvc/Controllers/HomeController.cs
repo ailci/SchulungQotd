@@ -13,18 +13,28 @@ namespace SchulungQotd.Mvc.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IQotdService _qotdService;
+        private readonly IQotdService _fakeQotdService;
 
-        public HomeController(ILogger<HomeController> logger, IQotdService qotdService)
+        public HomeController(ILogger<HomeController> logger, IQotdService qotdService, 
+            [FromKeyedServices("fakeService")] IQotdService fakeQotdService)
         {
             _logger = logger;
             _qotdService = qotdService;
+            _fakeQotdService = fakeQotdService;
         }
 
         public async Task<IActionResult> Index()
         {
             var qotdVm = await _qotdService.GetQuoteOfTheDayAsync();
-
+            
             return View(qotdVm);
+        }
+
+        public async Task<IActionResult> IndexFake()
+        {
+            var qotdVm = await _fakeQotdService.GetQuoteOfTheDayAsync();
+
+            return View("Index",qotdVm);
         }
 
         public IActionResult Privacy()

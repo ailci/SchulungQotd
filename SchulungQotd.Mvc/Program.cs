@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SchulungQotd.Data.Context;
+using SchulungQotd.Mvc.Controllers;
 using SchulungQotd.Mvc.Data;
 using SchulungQotd.Service;
 
@@ -22,6 +23,7 @@ builder.Services.AddDbContext<QotdContext>(options => options.UseSqlServer(conne
 
 //QotdService
 builder.Services.AddScoped<IQotdService, QotdService>();
+builder.Services.AddKeyedScoped<IQotdService, FakeQotdService>("fakeService");
 
 var app = builder.Build();
 
