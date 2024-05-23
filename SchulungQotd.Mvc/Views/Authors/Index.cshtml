@@ -16,7 +16,9 @@
             <tr>
                 <td>
                     <!-- Klassik -->
-                    <img width="120" src="@Url.Action("GetImage","Authors", new { authorId = author.Id })" />
+                    @*  <img width="120" src="@Url.Action("GetImage","Authors", new { authorId = author.Id })" /> *@
+                    
+                    <imagedataurl image-mime-type="@author.PhotoMimeType" image="@author.Photo"></imagedataurl>
                 </td>
                 <td>@Html.DisplayFor(modelItem => author.Name)</td>
                 <td>@Html.DisplayFor(modelItem => author.Description)</td>

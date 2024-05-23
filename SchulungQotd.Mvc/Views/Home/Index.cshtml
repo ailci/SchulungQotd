@@ -10,14 +10,18 @@
             <h5 class="display-6 py-3">Spruch Des Tages</h5>
             <p class="text-center">
                 <!-- BILD -->
-                @if (!string.IsNullOrEmpty(Model?.AuthorImageMimeType))
+                @*  @if (!string.IsNullOrEmpty(Model?.AuthorImageMimeType))
                 {
                     <img width="150" src="data:@Model.AuthorImageMimeType;base64,@Convert.ToBase64String(Model.AuthorImage)" />
                 }
                 else
                 {
                     <img width="150" src="https://via.placeholder.com/150" />
-                }
+                } *@
+                
+                <imagedataurl image-mime-type="@Model?.AuthorImageMimeType"
+                              image="@Model?.AuthorImage"
+                              width="150"></imagedataurl>
             </p>
             <blockquote class="text-center">
                 <p class="lead fw-bold">@Model?.QuoteText</p>
