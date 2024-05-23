@@ -10,5 +10,6 @@ namespace SchulungQotd.Service
     public interface IQotdService
     {
         Task<QuoteOfTheDayViewModel?> GetQuoteOfTheDayAsync();
+        Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync(bool includeQuotes = false);
     }
 }

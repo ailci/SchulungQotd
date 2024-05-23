@@ -23,5 +23,10 @@ namespace SchulungQotd.Service
 
             return await Task.FromResult(qotdVm);
         }
+
+        public async Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync(bool includeQuotes = false)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

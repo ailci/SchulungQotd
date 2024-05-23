@@ -25,6 +25,9 @@ builder.Services.AddDbContext<QotdContext>(options => options.UseSqlServer(conne
 builder.Services.AddScoped<IQotdService, QotdService>();
 builder.Services.AddKeyedScoped<IQotdService, FakeQotdService>("fakeService");
 
+//Automapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 //Startbeispiel Middleware ############################################################################################
