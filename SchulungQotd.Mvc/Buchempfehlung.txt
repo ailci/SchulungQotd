@@ -1,0 +1,5 @@
+﻿https://www.rheinwerk-verlag.de/c-sharp-8-mit-visual-studio-2019-das-umfassende-handbuch/
+
+https://www.amazon.de/Microsoft-Visual-Step-Developer-dp-0137619839/dp/0137619839/ref=dp_ob_title_bk
+
+https://www.amazon.de/Pro-Asp-net-Core-Adam-Freeman/dp/1633437825/ref=sr_1_9?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=13XK7PW5SYDC9&dib=eyJ2IjoiMSJ9.A9Ha8eC37e6zPHyVXf4SFzbuGld7FaQkR6Ivh2vvyFQVm6GESD_R-Vje8-9ljL-uCpNUG7KMDnmtuYFqBF3ed6kR4WqfNDtTN4CtybwFryZOskRa_JuCuJ9kBOpveypiRxlNlVtwBTzv8ZJaLvt4EppCnk7pjEKAaIR2n4nmAD7LILEL0yLhUjAE1xLvuLAqqPaAPTxY8c_RBY0FAmSl1o5HfSkitFOdC10VioUpVzo.GRhssCHBr-ZOIhbA-ksyAZqB3uhgGs9k22Ouoh-9MEw&dib_tag=se&keywords=asp.net+core+mvc&qid=1716554870&sprefix=asp.net+core+mvc%2Caps%2C94&sr=8-9
