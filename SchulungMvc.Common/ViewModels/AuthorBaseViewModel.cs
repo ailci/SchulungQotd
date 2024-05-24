@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchulungMvc.Common.Validations;
 
 namespace SchulungMvc.Common.ViewModels
 {
@@ -13,6 +14,7 @@ namespace SchulungMvc.Common.ViewModels
 
         [Required(ErrorMessage = "Bitte geben Sie einen Namen ein!")]
         [MaxLength(50, ErrorMessage = "Der Name hat mehr als 50 Zeichen")]
+        [ForbiddenInput("administrator,root,admin,god")]
         public string Name { get; set; } = string.Empty;
 
         [Display(Name = "Beschreibung")]
