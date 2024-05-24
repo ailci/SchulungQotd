@@ -8,6 +8,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SchulungQotd.Data.Context;
+using SchulungQotd.Domain;
 
 namespace SchulungQotd.Service
 {
@@ -68,6 +69,16 @@ namespace SchulungQotd.Service
             }
 
             context.Authors.Remove(author);
+            await context.SaveChangesAsync();
+
+            return mapper.Map<AuthorViewModel>(author);
+        }
+
+        public async Task<AuthorViewModel?> CreateAuthorAsync(AuthorCreateViewModel authorCreateViewModel)
+        {
+            var author = mapper.Map<Author>(authorCreateViewModel);
+
+            context.Authors.Add(author);
             await context.SaveChangesAsync();
 
             return mapper.Map<AuthorViewModel>(author);

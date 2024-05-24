@@ -74,8 +74,11 @@ namespace SchulungQotd.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                //TODO: Speichern
-                return RedirectToAction(nameof(Index));
+                var authorVm = qotdService.CreateAuthorAsync(authorCreateVm);
+                if (authorVm is not null)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
             }
 
             return View(authorCreateVm);

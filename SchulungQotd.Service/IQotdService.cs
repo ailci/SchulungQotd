@@ -13,5 +13,6 @@ namespace SchulungQotd.Service
         Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync(bool includeQuotes = false);
         Task<AuthorViewModel?> GetAuthorByIdAsync(Guid id, bool  includeQuotes = false);
         Task<AuthorViewModel?> DeleteAuthorAsync(Guid id);
+        Task<AuthorViewModel?> CreateAuthorAsync(AuthorCreateViewModel authorCreateViewModel);
     }
 }

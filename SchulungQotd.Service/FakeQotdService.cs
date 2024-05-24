@@ -38,5 +38,10 @@ namespace SchulungQotd.Service
         {
             throw new NotImplementedException();
         }
+
+        public async Task<AuthorViewModel?> CreateAuthorAsync(AuthorCreateViewModel authorCreateViewModel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
