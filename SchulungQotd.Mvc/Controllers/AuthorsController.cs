@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using SchulungMvc.Common.ViewModels;
 using SchulungQotd.Domain;
 using SchulungQotd.Service;
 
@@ -60,6 +61,24 @@ namespace SchulungQotd.Mvc.Controllers
             }
 
             return View(deletedAuthorVm);
+        }
+
+        #endregion
+
+        #region CREATE
+
+        public IActionResult Create() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> Create(AuthorCreateViewModel authorCreateVm)
+        {
+            if (ModelState.IsValid)
+            {
+                //TODO: Speichern
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(authorCreateVm);
         }
 
         #endregion
