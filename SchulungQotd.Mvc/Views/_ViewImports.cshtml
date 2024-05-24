@@ -2,3 +2,6 @@
 @using SchulungQotd.Mvc.Models
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, SchulungMvc.Common
+
+@* Muss sich selber hinzufügen, ansonsten werden ViewComponents nicht aufgerufen *@
+@addTagHelper *, SchulungQotd.Mvc
