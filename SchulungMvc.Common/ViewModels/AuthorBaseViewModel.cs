@@ -23,6 +23,7 @@ namespace SchulungMvc.Common.ViewModels
 
         [Display(Name = "Geburtsdatum")]
         [DataType(DataType.Date)]
+        [NoFutureDate(ErrorMessage="Geburtsdatum liegt in der Zukunft")]
         public DateOnly? BirthDate { get; set; }
     }
 }
