@@ -17,5 +17,10 @@ namespace SchulungQotd.Data.Context
         {
             
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.SeedData();
+        }
     }
 }
