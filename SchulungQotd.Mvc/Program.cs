@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using SchulungQotd.Data.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Db
+builder.Services.AddDbContext<QotdContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 var app = builder.Build();
 
@@ -45,6 +54,3 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");  //localhost:5001/{ControllerName}/{ActionName}
 
 app.Run();
-
-
-//BLABLA
