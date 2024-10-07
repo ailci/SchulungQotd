@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using SchulungQotd.Data.Context;
 using SchulungQotd.Domain;
+using SchulungQotd.Service.Models;
 
 namespace SchulungQotd.Mvc.Controllers
 {
@@ -32,7 +33,7 @@ namespace SchulungQotd.Mvc.Controllers
                 AuthorDescription = randomQuote.Author?.Description ?? string.Empty,
                 AuthorBirthdate = randomQuote.Author?.BirthDate,
                 AuthorImage = randomQuote.Author?.Photo,
-                AuthorMimeType = randomQuote.Author?.PhotoMimeType
+                AuthorImageMimeType = randomQuote.Author?.PhotoMimeType
             };
 
             return View(qotd);
