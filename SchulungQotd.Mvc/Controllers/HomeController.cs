@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchulungQotd.Mvc.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 using SchulungQotd.Data.Context;
 using SchulungQotd.Domain;
 
@@ -19,9 +20,22 @@ namespace SchulungQotd.Mvc.Controllers
 
         public IActionResult Index()
         {
-            var authors = _context.Authors.ToList();
+            var quotes = _context.Quotes.Include(c => c.Author).ToList();
+            var random = new Random();
 
-            return View();
+            var randomQuote = quotes[random.Next(0, quotes.Count)];  //6,1,3,9,7
+
+            var qotd = new QuoteOfTheDayViewModel
+            {
+                QuoteText = randomQuote.QuoteText,
+                AuthorName = randomQuote.Author?.Name ?? string.Empty,
+                AuthorDescription = randomQuote.Author?.Description ?? string.Empty,
+                AuthorBirthdate = randomQuote.Author?.BirthDate,
+                AuthorImage = randomQuote.Author?.Photo,
+                AuthorMimeType = randomQuote.Author?.PhotoMimeType
+            };
+
+            return View(qotd);
         }
 
         public IActionResult Privacy()
