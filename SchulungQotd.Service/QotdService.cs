@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic.CompilerServices;
 using SchulungQotd.Domain;
 using SchulungQotd.Service.Utilities;
+using AutoMapper;
 
 namespace SchulungQotd.Service
 {
@@ -17,60 +19,59 @@ namespace SchulungQotd.Service
     {
         private readonly QotdContext _context;
         private readonly ILogger<QotdService> _logger;
+        private readonly IMapper _mapper;
 
-        public QotdService(QotdContext context, ILogger<QotdService> logger)
+        public QotdService(QotdContext context, ILogger<QotdService> logger, IMapper mapper)
         {
             _context = context;
             _logger = logger;
+            _mapper = mapper;
         }
 
         public async Task<AuthorViewModel?> AddAuthorAsync(AuthorCreateViewModel authorCreateViewModel)
         {
             _logger.LogInformation($"AddAuthor aufgerufen.. {authorCreateViewModel}");
 
-            var author = new Author
-            {
-                Name = authorCreateViewModel.Name,
-                Description = authorCreateViewModel.Description,
-                BirthDate = authorCreateViewModel.BirthDate
-            };
+            //var author = new Author
+            //{
+            //    Name = authorCreateViewModel.Name,
+            //    Description = authorCreateViewModel.Description,
+            //    BirthDate = authorCreateViewModel.BirthDate
+            //};
 
-            if (authorCreateViewModel.Photo is not null)
-            {
-                var (fileContent, contentType) = await Util.GetFile(authorCreateViewModel.Photo);
-                author.Photo = fileContent;
-                author.PhotoMimeType = contentType;
-            }
+            //if (authorCreateViewModel.Photo is not null)
+            //{
+            //    var (fileContent, contentType) = await Util.GetFile(authorCreateViewModel.Photo);
+            //    author.Photo = fileContent;
+            //    author.PhotoMimeType = contentType;
+            //}
+
+            var author = _mapper.Map<Author>(authorCreateViewModel);
 
             _context.Authors.Add(author);
             await _context.SaveChangesAsync();
 
-            return new AuthorViewModel
-            {
-                Id = author.Id,
-                Name = author.Name,
-                Description = author.Description,
-                BirthDate = author.BirthDate,
-                Photo = author.Photo,
-                PhotoMimeType = author.PhotoMimeType
-            };
+            return _mapper.Map<AuthorViewModel>(author);
         }
 
         public IEnumerable<AuthorViewModel> GetAuthors()
         {
             var authors = _context.Authors.ToList();
 
-            var authorsViewModel = authors.Select(c => new AuthorViewModel
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Description = c.Description,
-                BirthDate = c.BirthDate,
-                Photo = c.Photo,
-                PhotoMimeType = c.PhotoMimeType
-            });
+            //var authorsViewModel = authors.Select(c => new AuthorViewModel
+            //{
+            //    Id = c.Id,
+            //    Name = c.Name,
+            //    Description = c.Description,
+            //    BirthDate = c.BirthDate,
+            //    Photo = c.Photo,
+            //    PhotoMimeType = c.PhotoMimeType
+            //});
 
-            return authorsViewModel;
+            //return authorsViewModel;
+
+            //Automapper
+            return _mapper.Map<IEnumerable<AuthorViewModel>>(authors);
         }
 
         public QuoteOfTheDayViewModel? GetQuoteOfTheDay()
@@ -80,15 +81,17 @@ namespace SchulungQotd.Service
 
             var randomQuote = quotes[random.Next(0, quotes.Count)];  //6,1,3,9,7
 
-            return new QuoteOfTheDayViewModel
-            {
-                QuoteText = randomQuote.QuoteText,
-                AuthorName = randomQuote.Author?.Name ?? string.Empty,
-                AuthorDescription = randomQuote.Author?.Description ?? string.Empty,
-                AuthorBirthdate = randomQuote.Author?.BirthDate,
-                AuthorImage = randomQuote.Author?.Photo,
-                AuthorImageMimeType = randomQuote.Author?.PhotoMimeType
-            };
+            //return new QuoteOfTheDayViewModel
+            //{
+            //    QuoteText = randomQuote.QuoteText,
+            //    AuthorName = randomQuote.Author?.Name ?? string.Empty,
+            //    AuthorDescription = randomQuote.Author?.Description ?? string.Empty,
+            //    AuthorBirthdate = randomQuote.Author?.BirthDate,
+            //    AuthorImage = randomQuote.Author?.Photo,
+            //    AuthorImageMimeType = randomQuote.Author?.PhotoMimeType
+            //};
+
+            return _mapper.Map<QuoteOfTheDayViewModel>(randomQuote);
         }
     }
 }

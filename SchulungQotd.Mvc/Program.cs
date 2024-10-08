@@ -17,6 +17,9 @@ builder.Services.AddDbContext<QotdContext>(options =>
 //DInjection
 builder.Services.AddScoped<IQotdService, QotdService>();
 
+//Automapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 //Startbeispiel Middleware ############################################################################################
