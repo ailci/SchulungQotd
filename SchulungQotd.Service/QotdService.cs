@@ -54,6 +54,13 @@ namespace SchulungQotd.Service
             return _mapper.Map<AuthorViewModel>(author);
         }
 
+        public async Task<IEnumerable<QuoteViewModel>?> GetQuotesAsync()
+        {
+            var quotes = await _context.Quotes.Include(c => c.Author).ToListAsync();
+
+            return _mapper.Map<IEnumerable<QuoteViewModel>>(quotes);
+        }
+
         public IEnumerable<AuthorViewModel> GetAuthors()
         {
             var authors = _context.Authors.ToList();

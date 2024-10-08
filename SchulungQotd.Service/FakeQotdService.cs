@@ -29,5 +29,10 @@ namespace SchulungQotd.Service
                 QuoteText = "Larum lierum Löffelstiel, wer nicht fragt, der weiß nicht viel!"
             };
         }
+
+        public Task<IEnumerable<QuoteViewModel>?> GetQuotesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

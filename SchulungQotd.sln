@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchulungQotd.Mvc", "SchulungQotd.Mvc\SchulungQotd.Mvc.csproj", "{5DD41DAB-42D3-475F-B769-F69BD72F9891}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchulungQotd.Mvc", "SchulungQotd.Mvc\SchulungQotd.Mvc.csproj", "{5DD41DAB-42D3-475F-B769-F69BD72F9891}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchulungQotd.Domain", "SchulungQotd.Domain\SchulungQotd.Domain.csproj", "{D3017153-0976-4B71-BFC3-7333213FE70D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchulungQotd.Domain", "SchulungQotd.Domain\SchulungQotd.Domain.csproj", "{D3017153-0976-4B71-BFC3-7333213FE70D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchulungQotd.Data", "SchulungQotd.Data\SchulungQotd.Data.csproj", "{704B8246-9255-44A0-98FE-167A20169EDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchulungQotd.Data", "SchulungQotd.Data\SchulungQotd.Data.csproj", "{704B8246-9255-44A0-98FE-167A20169EDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchulungQotd.Service", "SchulungQotd.Service\SchulungQotd.Service.csproj", "{9C313D31-B285-49BD-9427-31674656BDF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchulungQotd.Service", "SchulungQotd.Service\SchulungQotd.Service.csproj", "{9C313D31-B285-49BD-9427-31674656BDF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

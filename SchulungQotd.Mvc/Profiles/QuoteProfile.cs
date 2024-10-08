@@ -11,6 +11,9 @@ namespace SchulungQotd.Mvc.Profiles
             CreateMap<Quote, QuoteOfTheDayViewModel>()
                 .ForMember(c => c.AuthorImage, opt => opt.MapFrom(src => src.Author.Photo))
                 .ForMember(c => c.AuthorImageMimeType, opt => opt.MapFrom(src => src.Author.PhotoMimeType));
+
+            CreateMap<Quote, QuoteViewModel>()
+                .ForMember(c => c.AuthorName, opt => opt.MapFrom(src => src.Author.Name));
         }
     }
 }

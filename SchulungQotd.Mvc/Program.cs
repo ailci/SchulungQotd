@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 //Db
 builder.Services.AddDbContext<QotdContext>(options =>
@@ -60,5 +61,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");  //localhost:5001/{ControllerName}/{ActionName}
+app.MapRazorPages();
 
 app.Run();
