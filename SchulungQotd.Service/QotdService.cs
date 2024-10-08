@@ -18,6 +18,23 @@ namespace SchulungQotd.Service
             _context = context;
         }
 
+        public IEnumerable<AuthorViewModel> GetAuthors()
+        {
+            var authors = _context.Authors.ToList();
+
+            var authorsViewModel = authors.Select(c => new AuthorViewModel
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Description = c.Description,
+                BirthDate = c.BirthDate,
+                Photo = c.Photo,
+                PhotoMimeType = c.PhotoMimeType
+            });
+
+            return authorsViewModel;
+        }
+
         public QuoteOfTheDayViewModel? GetQuoteOfTheDay()
         {
             var quotes = _context.Quotes.Include(c => c.Author).ToList();

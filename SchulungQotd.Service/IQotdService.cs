@@ -10,5 +10,6 @@ namespace SchulungQotd.Service
     public interface IQotdService
     {
         QuoteOfTheDayViewModel? GetQuoteOfTheDay();
+        IEnumerable<AuthorViewModel> GetAuthors();
     }
 }

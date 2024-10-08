@@ -9,6 +9,11 @@ namespace SchulungQotd.Service
 {
     public class FakeQotdService : IQotdService
     {
+        public IEnumerable<AuthorViewModel> GetAuthors()
+        {
+            throw new NotImplementedException();
+        }
+
         public QuoteOfTheDayViewModel? GetQuoteOfTheDay()
         {
             return new QuoteOfTheDayViewModel()
