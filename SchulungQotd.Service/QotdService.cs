@@ -6,16 +6,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic.CompilerServices;
+using SchulungQotd.Domain;
+using SchulungQotd.Service.Utilities;
 
 namespace SchulungQotd.Service
 {
     public class QotdService : IQotdService
     {
         private readonly QotdContext _context;
+        private readonly ILogger<QotdService> _logger;
 
-        public QotdService(QotdContext context)
+        public QotdService(QotdContext context, ILogger<QotdService> logger)
         {
             _context = context;
+            _logger = logger;
+        }
+
+        public async Task<AuthorViewModel?> AddAuthorAsync(AuthorCreateViewModel authorCreateViewModel)
+        {
+            _logger.LogInformation($"AddAuthor aufgerufen.. {authorCreateViewModel}");
+
+            var author = new Author
+            {
+                Name = authorCreateViewModel.Name,
+                Description = authorCreateViewModel.Description,
+                BirthDate = authorCreateViewModel.BirthDate
+            };
+
+            if (authorCreateViewModel.Photo is not null)
+            {
+                var (fileContent, contentType) = await Util.GetFile(authorCreateViewModel.Photo);
+                author.Photo = fileContent;
+                author.PhotoMimeType = contentType;
+            }
+
+            _context.Authors.Add(author);
+            await _context.SaveChangesAsync();
+
+            return new AuthorViewModel
+            {
+                Id = author.Id,
+                Name = author.Name,
+                Description = author.Description,
+                BirthDate = author.BirthDate,
+                Photo = author.Photo,
+                PhotoMimeType = author.PhotoMimeType
+            };
         }
 
         public IEnumerable<AuthorViewModel> GetAuthors()

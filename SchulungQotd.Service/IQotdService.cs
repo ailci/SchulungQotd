@@ -11,5 +11,6 @@ namespace SchulungQotd.Service
     {
         QuoteOfTheDayViewModel? GetQuoteOfTheDay();
         IEnumerable<AuthorViewModel> GetAuthors();
+        Task<AuthorViewModel?> AddAuthorAsync(AuthorCreateViewModel authorCreateViewModel);
     }
 }

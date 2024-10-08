@@ -9,6 +9,11 @@ namespace SchulungQotd.Service
 {
     public class FakeQotdService : IQotdService
     {
+        public Task<AuthorViewModel?> AddAuthorAsync(AuthorCreateViewModel authorCreateViewModel)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<AuthorViewModel> GetAuthors()
         {
             throw new NotImplementedException();

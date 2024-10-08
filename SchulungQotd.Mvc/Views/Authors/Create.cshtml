@@ -1,0 +1,54 @@
+﻿@model SchulungQotd.Service.Models.AuthorCreateViewModel
+
+<div class="row">
+    <div class="col">
+        <h4>Autor erstellen</h4>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        
+        <form asp-action="Create" enctype="multipart/form-data">
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Name -->
+            <div class="form-floating mb-3">
+                <input asp-for="Name" class="form-control" placeholder=" "/>
+                <label asp-for="Name"></label>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- Beschreibung -->
+            <div class="form-floating mb-3">
+                <input asp-for="Description" class="form-control" placeholder=" "/>
+                <label asp-for="Description"></label>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <!-- Geburtsdatum -->
+            <div class="form-floating mb-3">
+                <input asp-for="BirthDate" class="form-control" type="date"/>
+                <label asp-for="BirthDate"></label>
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+
+            <!-- Photo -->
+            <div class="form-floating mb-3">
+                <input asp-for="Photo" class="form-control" type="file" accept="image/png, image/jpeg, image/jpg, image/gif"/>
+                <label asp-for="Photo"></label>
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+
+            <!-- Absenden -->
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-send-fill"></i> speichern</button>
+            </div>
+
+        </form>   
+        
+        
+
+    </div>
+</div>
