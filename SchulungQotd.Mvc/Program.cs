@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SchulungQotd.Data.Context;
+using SchulungQotd.Mvc.Controllers;
+using SchulungQotd.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,9 @@ builder.Services.AddDbContext<QotdContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+//DInjection
+builder.Services.AddScoped<IQotdService, QotdService>();
 
 var app = builder.Build();
 

@@ -4,37 +4,52 @@ using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using SchulungQotd.Data.Context;
 using SchulungQotd.Domain;
+using SchulungQotd.Service;
 using SchulungQotd.Service.Models;
 
 namespace SchulungQotd.Mvc.Controllers
 {
+    public interface IBier
+    {
+        string HolBier();
+    }
+
+    public class Krombacher : IBier
+    {
+        public string HolBier()
+        {
+            return "Krombacher";
+        }
+
+        public string Test()
+        {
+            return string.Empty;
+        }
+    }
+
+    public class Veltins : IBier
+    {
+        public string HolBier()
+        {
+            return "Veltins";
+        }
+    }
+
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly QotdContext _context;
+        private readonly IQotdService _qotdService;
 
-        public HomeController(ILogger<HomeController> logger, QotdContext context)
+        public HomeController(ILogger<HomeController> logger, QotdContext context, IQotdService qotdService)
         {
             _logger = logger;
-            _context = context;
+            _qotdService = qotdService;
         }
 
         public IActionResult Index()
         {
-            var quotes = _context.Quotes.Include(c => c.Author).ToList();
-            var random = new Random();
-
-            var randomQuote = quotes[random.Next(0, quotes.Count)];  //6,1,3,9,7
-
-            var qotd = new QuoteOfTheDayViewModel
-            {
-                QuoteText = randomQuote.QuoteText,
-                AuthorName = randomQuote.Author?.Name ?? string.Empty,
-                AuthorDescription = randomQuote.Author?.Description ?? string.Empty,
-                AuthorBirthdate = randomQuote.Author?.BirthDate,
-                AuthorImage = randomQuote.Author?.Photo,
-                AuthorImageMimeType = randomQuote.Author?.PhotoMimeType
-            };
+            var qotd = _qotdService.GetQuoteOfTheDay();
 
             return View(qotd);
         }
