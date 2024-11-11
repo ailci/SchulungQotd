@@ -36,7 +36,6 @@ var app = builder.Build();
 //    await context.Response.WriteAsync("End Middleware\n");
 //});
 
-
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -61,5 +60,3 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
-
-//Ein Test

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchulungQotd.Mvc.Models;
 using System.Diagnostics;
+using SchulungQotd.Domain;
 
 namespace SchulungQotd.Mvc.Controllers
 {
@@ -15,6 +16,8 @@ namespace SchulungQotd.Mvc.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Message = DateTime.Now.Hour > 12 ? "Guten Tag" : "Guten Morgen";
+
             return View();
         }
 
