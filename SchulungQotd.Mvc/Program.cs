@@ -12,11 +12,31 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+//MVC
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline. #############################################################
+//app.Use(async (context, next) =>
+//{
+//    var userAgent = context.Request.Headers["User-Agent"][0];
+//    await context.Response.WriteAsync("Erste Middleware\n" + userAgent);
+//    await next();
+//    await context.Response.WriteAsync("Erste Middleware Back\n");
+//});
+//app.Use(async (context, next) =>
+//{
+//    await context.Response.WriteAsync("Zweite Middleware\n");
+//    await next();
+//});
+//app.Run(async context =>
+//{
+//    await context.Response.WriteAsync("End Middleware\n");
+//});
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -41,3 +61,5 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+//Ein Test
