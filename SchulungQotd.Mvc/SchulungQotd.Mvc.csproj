@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchulungQotd.Domain\SchulungQotd.Domain.csproj" />
+    <ProjectReference Include="..\SchulungQotd.Shared\SchulungQotd.Shared.csproj" />
   </ItemGroup>
 
 </Project>

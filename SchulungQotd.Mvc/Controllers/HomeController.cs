@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using SchulungQotd.Mvc.Models;
 using System.Diagnostics;
 using SchulungQotd.Domain;
+using SchulungQotd.Shared.Models;
 
 namespace SchulungQotd.Mvc.Controllers
 {
@@ -18,7 +19,15 @@ namespace SchulungQotd.Mvc.Controllers
         {
             ViewBag.Message = DateTime.Now.Hour > 12 ? "Guten Tag" : "Guten Morgen";
 
-            return View();
+            var qotdVm = new QuoteOfTheDayViewModel()
+            {
+                AuthorName = "Darth Vader",
+                AuthorDescription = "Sith-Lord",
+                AuthorBirthDate = DateOnly.FromDateTime(new DateTime(1977, 04, 05)),
+                QuoteText = "Sie machen mich enttäuscht, Commander!"
+            };
+
+            return View(qotdVm);
         }
 
         public IActionResult Privacy()

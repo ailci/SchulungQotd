@@ -1,8 +1,36 @@
-﻿@{
+﻿@model SchulungQotd.Shared.Models.QuoteOfTheDayViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="text-center">
+        <div class="p-2 bg-light rounded-3">
+            <h5 class="display-6 py-3">Spruch Des Tages</h5>
+            <p class="text-center">
+                <!-- BILD AUTHOR -->
+                @if (!string.IsNullOrEmpty(Model.AuthorPhotoMimeType) && Model.AuthorPhoto is not null)
+                {
+                    @* TODO: Author Bild anzeigen  *@
+                }
+                else
+                {
+                    <img width="150" src="https://via.placeholder.com/150" />
+                }
+            </p>
+            <blockquote class="text-center">
+                <p class="lead fw-bold">@Model.QuoteText</p>
+                <cite>
+                    <span>@Model.AuthorName - @Model.AuthorDescription</span>
+                    <br />
+                    <span>
+                        @(Model.AuthorBirthDate is not null ? Model.AuthorBirthDate.Value.ToShortDateString() : "")
+                    </span>
+                </cite>
+            </blockquote>
+        </div>
+    </div>
 </div>
+
+
