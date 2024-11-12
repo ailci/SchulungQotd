@@ -5,33 +5,26 @@ using Microsoft.EntityFrameworkCore;
 using SchulungQotd.Domain;
 using SchulungQotd.Shared.Models;
 using SchulungQotd.Data.Context;
+using SchulungQotd.Service;
 
 namespace SchulungQotd.Mvc.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly QotdContext _qotdContext;
+        private readonly IQotdService _qotdService;
 
-        public HomeController(ILogger<HomeController> logger, QotdContext qotdContext)
+        public HomeController(ILogger<HomeController> logger, IQotdService qotdService)
         {
             _logger = logger;
-            _qotdContext = qotdContext;
+            _qotdService = qotdService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewBag.Message = DateTime.Now.Hour > 12 ? "Guten Tag" : "Guten Morgen";
 
-            var author = _qotdContext.Authors.Include(c => c.Quotes).FirstOrDefault();
-
-            var qotdVm = new QuoteOfTheDayViewModel()
-            {
-                AuthorName = author.Name,
-                AuthorDescription = author.Description,
-                AuthorBirthDate = author.BirthDate,
-                QuoteText = author.Quotes.FirstOrDefault().QuoteText
-            };
+            var qotdVm = await _qotdService.GetQuoteOfTheDayAsync();
 
             return View(qotdVm);
         }
