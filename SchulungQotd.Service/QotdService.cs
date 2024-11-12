@@ -25,7 +25,8 @@ public class QotdService(QotdContext context) : IQotdService
             AuthorBirthDate = randomQuote.Author?.BirthDate,
             AuthorDescription = randomQuote.Author?.Description ?? string.Empty,
             AuthorPhoto = randomQuote.Author?.Photo,
-            AuthorPhotoMimeType = randomQuote.Author?.PhotoMimeType
+            AuthorPhotoMimeType = randomQuote.Author?.PhotoMimeType,
+            AuthorName = randomQuote.Author?.Name
         };
     }
 }
