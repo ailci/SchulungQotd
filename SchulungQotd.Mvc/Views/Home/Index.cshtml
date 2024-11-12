@@ -12,7 +12,8 @@
                 <!-- BILD AUTHOR -->
                 @if (!string.IsNullOrEmpty(Model.AuthorPhotoMimeType) && Model.AuthorPhoto is not null)
                 {
-                    @* TODO: Author Bild anzeigen  *@
+                    <!-- src="data:MIMETYPE;base64,NUTZDATEN" -->
+                    <img width="150" src="data:@Model.AuthorPhotoMimeType;base64,@Convert.ToBase64String(Model.AuthorPhoto)"/>
                 }
                 else
                 {
