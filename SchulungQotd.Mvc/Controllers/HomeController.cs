@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchulungQotd.Mvc.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 using SchulungQotd.Domain;
 using SchulungQotd.Shared.Models;
 using SchulungQotd.Data.Context;
@@ -22,15 +23,14 @@ namespace SchulungQotd.Mvc.Controllers
         {
             ViewBag.Message = DateTime.Now.Hour > 12 ? "Guten Tag" : "Guten Morgen";
 
-            var authors = _qotdContext.Authors.ToList();
-
+            var author = _qotdContext.Authors.Include(c => c.Quotes).FirstOrDefault();
 
             var qotdVm = new QuoteOfTheDayViewModel()
             {
-                AuthorName = "Darth Vader",
-                AuthorDescription = "Sith-Lord",
-                AuthorBirthDate = DateOnly.FromDateTime(new DateTime(1977, 04, 05)),
-                QuoteText = "Sie machen mich enttäuscht, Commander!"
+                AuthorName = author.Name,
+                AuthorDescription = author.Description,
+                AuthorBirthDate = author.BirthDate,
+                QuoteText = author.Quotes.FirstOrDefault().QuoteText
             };
 
             return View(qotdVm);

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchulungQotd.Data.EntityTypeConfiguration;
 
 namespace SchulungQotd.Data.Context
 {
@@ -21,6 +22,8 @@ namespace SchulungQotd.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            //modelBuilder.ApplyConfiguration(new AuthorEntityConf());
 
             modelBuilder.SeedData();
         }
