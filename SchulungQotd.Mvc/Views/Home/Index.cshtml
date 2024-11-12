@@ -10,7 +10,7 @@
             <h5 class="display-6 py-3">Spruch Des Tages</h5>
             <p class="text-center">
                 <!-- BILD AUTHOR -->
-                @if (!string.IsNullOrEmpty(Model.AuthorPhotoMimeType) && Model.AuthorPhoto is not null)
+                @* @if (!string.IsNullOrEmpty(Model.AuthorPhotoMimeType) && Model.AuthorPhoto is not null)
                 {
                     <!-- src="data:MIMETYPE;base64,NUTZDATEN" -->
                     <img width="150" src="data:@Model.AuthorPhotoMimeType;base64,@Convert.ToBase64String(Model.AuthorPhoto)"/>
@@ -18,7 +18,14 @@
                 else
                 {
                     <img width="150" src="https://via.placeholder.com/150" />
-                }
+                } *@
+                
+                <!-- 2. Version als TagHelper -->
+                <image-data-uri width="150"
+                                image-mime-type="@Model.AuthorPhotoMimeType"
+                                image="@Model.AuthorPhoto">
+                </image-data-uri>
+
             </p>
             <blockquote class="text-center">
                 <p class="lead fw-bold">@Model.QuoteText</p>
