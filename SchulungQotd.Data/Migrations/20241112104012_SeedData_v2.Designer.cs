@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchulungQotd.Data.Context;
 
@@ -11,9 +12,11 @@ using SchulungQotd.Data.Context;
 namespace SchulungQotd.Data.Migrations
 {
     [DbContext(typeof(QotdContext))]
-    partial class QotdContextModelSnapshot : ModelSnapshot
+    [Migration("20241112104012_SeedData_v2")]
+    partial class SeedData_v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
