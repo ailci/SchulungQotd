@@ -17,7 +17,7 @@ namespace SchulungQotd.Shared.Models
         [Display(Name = "Beschreibung")]
         public string Description { get; set; } = string.Empty;
 
-        [NoFutureDate]
+        [NoFutureDate(ErrorMessage = "Geburtsdatum liegt in der Zukunft")]
         [DataType(DataType.Date)]
         [Display(Name = "Geburtsdatum")]
         public DateOnly? BirthDate { get; set; }
