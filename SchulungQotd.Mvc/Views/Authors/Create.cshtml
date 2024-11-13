@@ -32,14 +32,16 @@
             
             <!-- Bild -->
             <div class="form-floating mb-3">
-                <input asp-for="" 
+                <input asp-for="Photo" 
                        class="form-control" 
                        placeholder="" 
-                       type="file" />
-                <label asp-for=""></label>
+                       type="file" accept="image/png, image/jpg, image/jpeg, image/gif" />
+                <label asp-for="Photo"></label>
             </div>
             
-
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">speichern</button>
+            </div>
 
         </form>
 
