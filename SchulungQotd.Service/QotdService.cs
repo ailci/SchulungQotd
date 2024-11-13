@@ -11,6 +11,11 @@ namespace SchulungQotd.Service;
 
 public class QotdService(QotdContext context) : IQotdService
 {
+    public Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync(bool includeQuotes = false)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<QuoteOfTheDayViewModel?> GetQuoteOfTheDayAsync()
     {
         var quotes = await context.Quotes.Include(c => c.Author).ToListAsync();
