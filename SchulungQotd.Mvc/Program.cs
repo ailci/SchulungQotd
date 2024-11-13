@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SchulungQotd.Data;
 using SchulungQotd.Data.Context;
 using SchulungQotd.Mvc.Controllers;
 using SchulungQotd.Mvc.Data;
@@ -21,10 +22,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 //QotdContext
-builder.Services.AddDbContext<QotdContext>(options =>
-{
-    options.UseSqlServer(connectionString);
-});
+builder.Services.AddQotdDataServicesRegistration(builder.Configuration);
 
 //DI
 builder.Services.AddScoped<IQotdService, QotdService>();
