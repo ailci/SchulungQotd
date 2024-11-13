@@ -30,6 +30,14 @@ public class AuthorsController : Controller
     [HttpPost, ActionName("Delete")]
     public async Task<IActionResult> DeleteConfirmed(Guid id)
     {
+        var deletedAuthorVm = await _qotdService.DeleteAuthorAsync(id);
 
+        if (deletedAuthorVm is not null)
+        {
+            //Weiterleitung
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View("Delete", deletedAuthorVm);
     }
 }
