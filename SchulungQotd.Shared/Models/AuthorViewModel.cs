@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchulungQotd.Shared.Models
 {
-    public class AuthorViewModel
+    public class AuthorViewModel : AuthorBaseViewModel
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public DateOnly? BirthDate { get; set; }
         public byte[]? Photo { get; set; }
         public string? PhotoMimeType { get; set; }
         public IList<QuoteViewModel> Quotes { get; set; } = [];

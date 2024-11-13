@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model SchulungQotd.Shared.Models.AuthorForCreateViewModel
+
+<div class="row">
+    <div class="col">
+        <h4>Autor erstellen</h4>
+        <hr/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        
+        <form asp-action="Create">
+            
+            <!-- Name -->
+            <div class="form-floating mb-3">
+                <input asp-for="Name" class="form-control" placeholder="" />
+                <label asp-for="Name"></label>
+            </div> 
+            
+            <!-- Beschreibung -->
+            <div class="form-floating mb-3">
+                <input asp-for="Description" class="form-control" placeholder="" />
+                <label asp-for="Description"></label>
+            </div> 
+            
+            <!-- Geburtsdatum -->
+            <div class="form-floating mb-3">
+                <input asp-for="BirthDate" class="form-control" placeholder="" type="date" />
+                <label asp-for="BirthDate"></label>
+            </div>  
+            
+            <!-- Bild -->
+            <div class="form-floating mb-3">
+                <input asp-for="" 
+                       class="form-control" 
+                       placeholder="" 
+                       type="file" />
+                <label asp-for=""></label>
+            </div>
+            
+
+
+        </form>
+
+    </div>
+</div>

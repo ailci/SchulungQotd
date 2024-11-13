@@ -37,7 +37,9 @@ public class AuthorsController : Controller
             //Weiterleitung
             return RedirectToAction(nameof(Index));
         }
-
+        
         return View("Delete", deletedAuthorVm);
     }
+
+    public ActionResult Create() => View();
 }
