@@ -11,23 +11,27 @@
     <div class="col-md-4">
         
         <form asp-action="Create">
-            
+            @* <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+
             <!-- Name -->
             <div class="form-floating mb-3">
                 <input asp-for="Name" class="form-control" placeholder="" />
                 <label asp-for="Name"></label>
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div> 
             
             <!-- Beschreibung -->
             <div class="form-floating mb-3">
                 <input asp-for="Description" class="form-control" placeholder="" />
                 <label asp-for="Description"></label>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div> 
             
             <!-- Geburtsdatum -->
             <div class="form-floating mb-3">
                 <input asp-for="BirthDate" class="form-control" placeholder="" type="date" />
                 <label asp-for="BirthDate"></label>
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
             </div>  
             
             <!-- Bild -->
@@ -37,6 +41,7 @@
                        placeholder="" 
                        type="file" accept="image/png, image/jpg, image/jpeg, image/gif" />
                 <label asp-for="Photo"></label>
+                <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
             
             <div class="mb-3">
@@ -47,3 +52,7 @@
 
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}

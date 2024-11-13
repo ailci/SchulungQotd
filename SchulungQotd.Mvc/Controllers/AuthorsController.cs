@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SchulungQotd.Service;
+using SchulungQotd.Shared.Models;
 
 namespace SchulungQotd.Mvc.Controllers;
 
@@ -42,4 +43,17 @@ public class AuthorsController : Controller
     }
 
     public ActionResult Create() => View();
+
+    [HttpPost]
+    public async Task<IActionResult> Create(AuthorForCreateViewModel authorCreateVm)
+    {
+        if (ModelState.IsValid)
+        {
+            //TODO: Autor erstellen, Service erweitern
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(authorCreateVm);
+    }
 }
