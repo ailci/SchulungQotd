@@ -11,6 +11,25 @@ namespace SchulungQotd.Service;
 
 public class QotdService(QotdContext context) : IQotdService
 {
+    public async Task<AuthorViewModel?> GetAuthorByIdAsync(Guid id)
+    {
+        //var author = context.Authors.FirstOrDefaultAsync(c => c.Id == id);
+        //var author = context.Authors.SingleOrDefaultAsync(c => c.Id == id);
+        var author = await context.Authors.FindAsync(id);
+
+        if (author is null) return null;
+
+        return new AuthorViewModel
+        {
+            Id = author.Id,
+            Name = author.Name,
+            Description = author.Description,
+            BirthDate = author.BirthDate,
+            Photo = author.Photo,
+            PhotoMimeType = author.PhotoMimeType
+        };
+    }
+
     public async Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync(bool includeQuotes = false)
     {
         var authors = !includeQuotes

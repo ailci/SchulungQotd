@@ -26,8 +26,8 @@
                 <td>@author.BirthDate</td>
                 <td>
                     <!-- Aktionen -->
-                    <a asp-action="Details" asp-route-id="@author.Id">Details</a>
-                    <a asp-action="Delete" asp-route-id="@author.Id"><i class="bi bi-trash"></i></a>
+                    <a asp-action="Details" asp-route-id="@author.Id" class="btn btn-info"><i class="bi bi-info-circle-fill"></i></a>
+                    <a asp-action="Delete" asp-route-id="@author.Id" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                 </td>
             </tr>
         }

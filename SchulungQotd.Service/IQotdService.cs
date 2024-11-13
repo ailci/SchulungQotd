@@ -11,5 +11,6 @@ namespace SchulungQotd.Service
     {
         Task<QuoteOfTheDayViewModel?> GetQuoteOfTheDayAsync();
         Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync(bool includeQuotes = false);
+        Task<AuthorViewModel?> GetAuthorByIdAsync(Guid id);
     }
 }

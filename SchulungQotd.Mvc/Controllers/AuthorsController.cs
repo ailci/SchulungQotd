@@ -18,4 +18,18 @@ public class AuthorsController : Controller
 
         return View(authorsVm);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var authorVm = await _qotdService.GetAuthorByIdAsync(id);
+        
+        return View(authorVm);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public async Task<IActionResult> DeleteConfirmed(Guid id)
+    {
+
+    }
 }
