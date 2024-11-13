@@ -12,9 +12,10 @@ public class AuthorsController : Controller
         _qotdService = qotdService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        //TODO: Service erweitern , View erstellen
-        return View();
+        var authorsVm = await _qotdService.GetAuthorsAsync();
+
+        return View(authorsVm);
     }
 }

@@ -9,6 +9,11 @@ namespace SchulungQotd.Service
 {
     public class FakeQotdService : IQotdService
     {
+        public Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync(bool includeQuotes = false)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<QuoteOfTheDayViewModel?> GetQuoteOfTheDayAsync()
         {
             var qotdVm = new QuoteOfTheDayViewModel
