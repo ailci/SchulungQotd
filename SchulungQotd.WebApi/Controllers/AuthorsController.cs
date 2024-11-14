@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchulungQotd.Service;
 using SchulungQotd.Shared.Models;
+using SchulungQotd.WebApi.Filter;
 
 namespace SchulungQotd.WebApi.Controllers
 {
@@ -18,6 +19,25 @@ namespace SchulungQotd.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<QuoteOfTheDayViewModel?>> GetQuoteOfTheDayAsync()
+        {
+            var qotd = await qotdService.GetQuoteOfTheDayAsync();
+
+            if (qotd is null) return NotFound();
+
+            return qotd;
+        }
+        
+        /// <summary>
+        /// Liefert einen zufälligen Spruch Des Tages (gesichert)
+        /// </summary>
+        /// <returns>QuoteOfTheDay</returns>
+        [HttpGet("quotes/qotdsecured")]  // localhost:1234/api/authors/quotes/qotdsecured
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [TypeFilter(typeof(ApiKeyAttribute))] // 1. Via Filter
+        public async Task<ActionResult<QuoteOfTheDayViewModel?>> GetQuoteOfTheDaySecuredAsync()
         {
             var qotd = await qotdService.GetQuoteOfTheDayAsync();
 
