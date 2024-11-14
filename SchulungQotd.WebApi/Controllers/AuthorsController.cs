@@ -45,5 +45,26 @@ namespace SchulungQotd.WebApi.Controllers
 
             return qotd;
         }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<AuthorViewModel>> CreateAuthorAsync(AuthorForCreateViewModel authorForCreateViewModel)
+        {
+            if (authorForCreateViewModel is null) return BadRequest(ModelState);
+
+            //if (!ModelState.IsValid) return BadRequest(ModelState); //braucht man nicht wenn Controller [ApiController]
+
+            var newAuthorVm = await qotdService.AddAuthorAsync(authorForCreateViewModel);
+
+            if (newAuthorVm is null) return Problem(detail: "Autor konnte nicht erstellt werden", statusCode: 400);
+
+            //return CreatedAtRoute("GetAuthor", new { id = newAuthorVm.Id }, newAuthorVm);
+
+            return Created();
+        }
+
     }
 }
