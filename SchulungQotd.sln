@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchulungQotd.Domain", "Schu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchulungQotd.Shared", "SchulungQotd.Shared\SchulungQotd.Shared.csproj", "{BD3FA705-6206-4BA6-9B9E-C59019C1B691}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchulungQotd.Data", "SchulungQotd.Data\SchulungQotd.Data.csproj", "{50F14F07-3BAA-4CE1-B482-69383B19AE9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchulungQotd.Data", "SchulungQotd.Data\SchulungQotd.Data.csproj", "{50F14F07-3BAA-4CE1-B482-69383B19AE9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchulungQotd.Service", "SchulungQotd.Service\SchulungQotd.Service.csproj", "{5D0AF9CE-0DFE-46FA-825F-8F3A8E2564C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchulungQotd.Service", "SchulungQotd.Service\SchulungQotd.Service.csproj", "{5D0AF9CE-0DFE-46FA-825F-8F3A8E2564C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

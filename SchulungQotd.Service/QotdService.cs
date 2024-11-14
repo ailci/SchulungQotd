@@ -129,4 +129,20 @@ public class QotdService(QotdContext context) : IQotdService
             AuthorName = randomQuote.Author?.Name
         };
     }
+
+    public async Task<IEnumerable<QuoteViewModel>?> GetQuotesAsync(bool includeAuthor = false)
+    {
+        var quotes = !includeAuthor
+            ? await context.Quotes.ToListAsync()
+            : await context.Quotes.Include(c => c.Author).ToListAsync();
+
+        var quotesVm = quotes.Select(c => new QuoteViewModel
+        {
+            QuoteText = c.QuoteText,
+            Id = c.Id,
+            AuthorName = c.Author?.Name
+        });
+
+        return quotesVm;
+    }
 }
