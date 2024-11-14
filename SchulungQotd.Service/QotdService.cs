@@ -11,6 +11,12 @@ namespace SchulungQotd.Service;
 
 public class QotdService(QotdContext context) : IQotdService
 {
+    public Task<AuthorViewModel?> AddAuthorAsync(AuthorForCreateViewModel authorForCreateViewModel)
+    {
+        //Hilfsfunktion AuthorForCreateViewModel => Author
+
+    }
+
     public async Task<AuthorViewModel?> DeleteAuthorAsync(Guid id)
     {
         var author = await context.Authors.FindAsync(id);
