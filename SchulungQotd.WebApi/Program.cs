@@ -36,6 +36,8 @@ builder.Services.AddQotdDataServicesRegistration(builder.Configuration);
 //DI
 builder.Services.AddScoped<IQotdService, QotdService>();
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline. ###########################################################

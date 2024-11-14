@@ -27,6 +27,13 @@ builder.Services.AddQotdDataServicesRegistration(builder.Configuration);
 //DI
 builder.Services.AddScoped<IQotdService, QotdService>();
 
+//HttpClientFactory - NamedClient
+builder.Services.AddHttpClient("qotdapi", options =>
+{
+    options.BaseAddress = new Uri("https://localhost:7256");
+    options.DefaultRequestHeaders.Add("Accept", "application/json");
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline. #############################################################
