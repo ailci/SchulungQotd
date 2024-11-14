@@ -46,6 +46,16 @@ namespace SchulungQotd.WebApi.Controllers
             return qotd;
         }
 
+        [HttpGet("{id:guid}", Name = "GetAuthor")]  // localhost:1234/authors/{id}
+        public async Task<IActionResult> GetAuthorByIdAsync(Guid id)
+        {
+            var author = await qotdService.GetAuthorByIdAsync(id);
+
+            if (author is null) return NotFound();
+
+            return Ok(author);
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -61,9 +71,9 @@ namespace SchulungQotd.WebApi.Controllers
 
             if (newAuthorVm is null) return Problem(detail: "Autor konnte nicht erstellt werden", statusCode: 400);
 
-            //return CreatedAtRoute("GetAuthor", new { id = newAuthorVm.Id }, newAuthorVm);
+            return CreatedAtRoute("GetAuthor", new { id = newAuthorVm.Id }, newAuthorVm);
 
-            return Created();
+            //return Created();
         }
 
     }
