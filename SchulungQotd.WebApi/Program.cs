@@ -1,3 +1,6 @@
+using SchulungQotd.Data;
+using SchulungQotd.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,9 +10,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//QotdContext
+builder.Services.AddQotdDataServicesRegistration(builder.Configuration);
+
+//DI
+builder.Services.AddScoped<IQotdService, QotdService>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline. ###########################################################
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

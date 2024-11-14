@@ -10,4 +10,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SchulungQotd.Data\SchulungQotd.Data.csproj" />
+    <ProjectReference Include="..\SchulungQotd.Domain\SchulungQotd.Domain.csproj" />
+    <ProjectReference Include="..\SchulungQotd.Service\SchulungQotd.Service.csproj" />
+    <ProjectReference Include="..\SchulungQotd.Shared\SchulungQotd.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
