@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchulungQotd.Data", "Schulu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchulungQotd.Service", "SchulungQotd.Service\SchulungQotd.Service.csproj", "{5D0AF9CE-0DFE-46FA-825F-8F3A8E2564C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchulungQotd.WebApi", "SchulungQotd.WebApi\SchulungQotd.WebApi.csproj", "{E931081A-7EA2-4021-9E93-587FD56E55E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5D0AF9CE-0DFE-46FA-825F-8F3A8E2564C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D0AF9CE-0DFE-46FA-825F-8F3A8E2564C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D0AF9CE-0DFE-46FA-825F-8F3A8E2564C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E931081A-7EA2-4021-9E93-587FD56E55E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E931081A-7EA2-4021-9E93-587FD56E55E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E931081A-7EA2-4021-9E93-587FD56E55E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E931081A-7EA2-4021-9E93-587FD56E55E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

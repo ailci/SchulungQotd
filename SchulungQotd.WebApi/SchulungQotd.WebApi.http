@@ -1,0 +1,6 @@
+@SchulungQotd.WebApi_HostAddress = http://localhost:5182
+
+GET {{SchulungQotd.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
