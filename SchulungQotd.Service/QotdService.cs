@@ -5,16 +5,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using SchulungQotd.Data.Context;
+using SchulungQotd.Domain;
+using SchulungQotd.Shared;
 
 namespace SchulungQotd.Service;
 
 public class QotdService(QotdContext context) : IQotdService
 {
-    public Task<AuthorViewModel?> AddAuthorAsync(AuthorForCreateViewModel authorForCreateViewModel)
+    public async Task<AuthorViewModel?> AddAuthorAsync(AuthorForCreateViewModel authorForCreateViewModel)
     {
         //Hilfsfunktion AuthorForCreateViewModel => Author
+        var author = new Author()
+        {
+            Name = authorForCreateViewModel.Name,
+            Description = authorForCreateViewModel.Description,
+            BirthDate = authorForCreateViewModel.BirthDate,
+        };
 
+        //Falls Bild vorhanden
+        if (authorForCreateViewModel.Photo is not null)
+        {
+            var (fileContent, fileContentType) = await Util.GetFile(authorForCreateViewModel.Photo);
+            author.Photo = fileContent;
+            author.PhotoMimeType = fileContentType;
+        }
+
+        context.Authors.Add(author);
+        await context.SaveChangesAsync();
+
+        return new AuthorViewModel
+        {
+            Id = author.Id,
+            Name = author.Name,
+            Description = author.Description,
+            BirthDate = author.BirthDate,
+            Photo = author.Photo,
+            PhotoMimeType = author.PhotoMimeType
+        };
     }
 
     public async Task<AuthorViewModel?> DeleteAuthorAsync(Guid id)

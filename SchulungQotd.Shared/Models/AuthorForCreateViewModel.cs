@@ -10,7 +10,7 @@ namespace SchulungQotd.Shared.Models
 {
     public class AuthorForCreateViewModel : AuthorBaseViewModel
     {
-        [AllowedExtensions("jpg,jpeg,png,bmp,gif")]
+        //[AllowedExtensions("jpg,jpeg,png,bmp,gif")]
         public IFormFile? Photo { get; set; }
     }
 }

@@ -45,13 +45,17 @@ public class AuthorsController : Controller
     public ActionResult Create() => View();
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(AuthorForCreateViewModel authorCreateVm)
     {
         if (ModelState.IsValid)
         {
-            //TODO: Autor erstellen, Service erweitern
+            var authorVm = await _qotdService.AddAuthorAsync(authorCreateVm);
 
-            return RedirectToAction(nameof(Index));
+            if (authorVm is not null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         return View(authorCreateVm);
