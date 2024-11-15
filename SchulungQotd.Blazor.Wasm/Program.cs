@@ -1,15 +1,21 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Options;
 using SchulungQotd.Blazor.Wasm;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+//OptionsPattern
+builder.Services.Configure<QotdWasmAppSettings>(builder.Configuration.GetSection("QotdWasmAppSettings"));
+
 //HttpClientFactory - NamedClient
-builder.Services.AddHttpClient("qotdapi", options =>
+builder.Services.AddHttpClient("qotdapi", (sp,options) =>
 {
-    options.BaseAddress = new Uri("https://localhost:7256");
+    //var internaluri = builder.Configuration["QotdWasmAppSettings:InternalQotdServiceUri"];
+    var apiConfiguration = sp.GetRequiredService<IOptions<QotdWasmAppSettings>>().Value;
+    options.BaseAddress = new Uri(apiConfiguration.InternalQotdServiceUri);
     options.DefaultRequestHeaders.Add("Accept", "application/json");
 });
 
