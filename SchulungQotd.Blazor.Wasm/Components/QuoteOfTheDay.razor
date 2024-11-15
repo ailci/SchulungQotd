@@ -1,0 +1,44 @@
+﻿
+@if (QotdVm is null)
+{
+    <div>Spruch des Tages wird geladen...</div>
+}
+else
+{
+    <div class="container">
+        <div class="text-center">
+            <div class="p-2 rounded-3">
+                <h5 class="display-6 py-3">Spruch Des Tages</h5>
+                <p class="text-center">
+                    <!-- Bild -->
+                    <DataImageUri Image="@QotdVm.AuthorPhoto"
+                                  ImageMimeType="@QotdVm.AuthorPhotoMimeType"
+                                  alt="@QotdVm.AuthorName" width="120">
+                    </DataImageUri>
+                </p>
+                <blockquote class="text-center">
+                    <p class="lead fw-bold">@QotdVm.QuoteText</p>
+                    <cite>
+                        <span>@QotdVm.AuthorName - @QotdVm.AuthorDescription</span>
+                        <br />
+                        <span>
+                            @(QotdVm.AuthorBirthDate is not null ? QotdVm.AuthorBirthDate.Value.ToShortDateString() : "k.A")
+                        </span>
+                    </cite>
+                </blockquote>
+            </div>
+        </div>
+        <div class="overflow-hidden">
+            <!-- Logging -->
+            @LogOfQotd
+        </div>
+    </div>
+}
+
+@code {
+
+    [Parameter, EditorRequired] 
+    public QuoteOfTheDayViewModel? QotdVm { get; set; }
+
+    [Parameter] public RenderFragment? LogOfQotd { get; set; }
+}
