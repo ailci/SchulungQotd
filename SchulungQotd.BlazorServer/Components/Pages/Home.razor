@@ -6,9 +6,8 @@
 <PageTitle>Qotd</PageTitle>
 
 <QuoteOfTheDay QotdVm="@QotdViewModel">
-
+    <LogOfQotd>
+        <div class="alert alert-dark">@QotdViewModel?.LogAsJson()</div>
+    </LogOfQotd>
 </QuoteOfTheDay>
 
-<div class="container alert alert-dark">
-    <div class=" overflow-hidden">@QotdViewModel?.LogAsJson()</div>
-</div>
