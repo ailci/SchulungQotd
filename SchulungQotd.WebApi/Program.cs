@@ -36,7 +36,14 @@ builder.Services.AddQotdDataServicesRegistration(builder.Configuration);
 //DI
 builder.Services.AddScoped<IQotdService, QotdService>();
 
-
+//Cors
+builder.Services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+{
+    builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+}));
 
 var app = builder.Build();
 
@@ -48,6 +55,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
