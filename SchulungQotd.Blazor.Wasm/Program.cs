@@ -6,6 +6,11 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+//HttpClientFactory - NamedClient
+builder.Services.AddHttpClient("qotdapi", options =>
+{
+    options.BaseAddress = new Uri("https://localhost:7256");
+    options.DefaultRequestHeaders.Add("Accept", "application/json");
+});
 
 await builder.Build().RunAsync();
