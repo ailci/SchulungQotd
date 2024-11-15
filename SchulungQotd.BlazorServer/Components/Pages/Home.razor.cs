@@ -10,6 +10,15 @@ public partial class Home
 
     protected override async Task OnInitializedAsync()
     {
-        QotdViewModel = await QotdService.GetQuoteOfTheDayAsync();
+        //QotdViewModel = await QotdService.GetQuoteOfTheDayAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            QotdViewModel = await QotdService.GetQuoteOfTheDayAsync();
+            StateHasChanged();
+        }
     }
 }

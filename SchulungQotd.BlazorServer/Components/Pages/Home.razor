@@ -3,6 +3,9 @@
 @page "/home"
 @page "/startseite"
 
+@rendermode InteractiveServer
+@* @rendermode @(new InteractiveServerRenderMode(prerender: false)) *@
+
 <PageTitle>Qotd</PageTitle>
 
 <QuoteOfTheDay QotdVm="@QotdViewModel">
